@@ -4,8 +4,6 @@ The purpose of this project was to create an application where users can create 
 
 ## User Stories
 
-* As a user, I want to see a list of current projects seeking funding.
-
 * As a user, I want to be able to create an account.
 
 * As a registered user, I want to create posts and view other users profiles and posts.
@@ -26,7 +24,7 @@ The purpose of this project was to create an application where users can create 
 
 * It's done when a logged in user is redirected to `/profile` when they try to visit `/login` again.
 
-* It's done when a user on the profile page can use the form to create a new project in the database.
+* It's done when a user on the profile page can use the form to create a new post in the database.
 
 * It's done when a user on the profile page can select a "Delete" button to remove their post from the database.
 
