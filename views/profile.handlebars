@@ -1,50 +1,46 @@
-{{!-- <div class="row">
-  <div class="col-auto">
-    <h2>Welcome, {{name}}!</h2>
-  </div>
-</div>
+<div class="container">
+    <div class="profile-img">
+        <img src="" width="200" alt="">
+    </div>
 
-<div class="row mt-4">
-  <div class="col-md-6">
-
-    <h3></h3>  --}}
-{{!-- <form class="form new-project-form"> --}}
-      
-      
-      <div class="container">
-        <div class="profile-header">
-          <div class="profile-img">
-            <img src="" width="200" alt="">
-          </div>
-      <div class="profile-nav">
-            <h2 class="user-name"> Welcome, {{name}}!</h2>
-            <div class="basic-info">
-              <p class="gender">{{gender}}</p>
-              <p class="city-state">{{citystate}}</p>
-              <p class="birthday">{{birthday}}</p>
-              <p class="bio">{{bio}}</p>
-          
-            </div>
-      </div>
-      <div class="profile">
-        <div class="notification">
-          <i class="fa fa-bell"></i>
-          <span class="alert-message">{{alert}}</span>
+<h1 class="title">Fakebook</h1>
+  <div class="profile-nav card">
+    <h2 class="user-name"> Welcome, user!</h2>
+      <div class="info">
+        <h3 class="header1">Account Info</h3>
+            <p class="names">Name:</p>
+            <p class="member">Member Since:</p>
+        <h3 class="basic-info">Basic Info</h3>
+          <p class="gender">Gender:</p>
+          <p class="city-state">Hometown:</p>
+          <p class="birthday">Birthday:</p>
         </div>
-      <div class="make-post">
-        <button type="submit" class="btn btn-primary">Post</button>
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Create</button>
-      </div> --}}
-    {{!-- </form> --}}
-  </div>
+    </div>
 
-   
-   
+    <div class="left-column card">
+        <h3 class="bio">Bio:</h3>
+            <p class="insert-bio">...</p>
+    </div>
 
-  </div>
-
+<div class="profile card">
+    <div class="notification">
+      <i class="fa fa-bell"></i>
+      <span class="alert-message">5</span>
+    </div>
+    <div class="main">
+        <div class="left-side">
+            <p class="phone">
+                <i class="fa fa-phone">
+                </i>phone number</p>
+                <p class="email"><i class="fa fa-envelope">
+                </i>email address</p>
+        </div>
+    </div>
 </div>
 
-<script src="./js/profile.js"></script>
+  <div class="make-post">
+    <button type="submit" class="btn btn-primary">Post</button>
+  </div>
+</div>
+
+<script src="public/js/profile.js"></script>
