@@ -1,4 +1,6 @@
-[
+{
+  "posts":
+  [
     {
       "post_content": "Test 1 Post"
     },
@@ -9,4 +11,4 @@
       "post_content": "Test 3 Post"
     }
   ]
-  
+}
