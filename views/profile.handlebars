@@ -7,21 +7,20 @@
 
   <h1 class="title">Fakebook</h1>
   <div class="profile-nav card">
-    <h2 class="user-name"> Welcome, user!</h2>
+    <h2 class="user-name"> Welcome, {{name}}!</h2>
         <div class="info">
         <h3 class="header1">Account Info</h3>
-            <p class="names">Name:</p>
-            <p class="member">Member Since:</p>
+          <label class="names">Name: {{name}}</label>
+          <label class="member">Member Since: {{memberSince}}</label>
         <h3 class="basic-info">Basic Info</h3>
-          <p class="gender">Gender:</p>
-          <p class="city-state">Hometown:</p>
-          <p class="birthday">Birthday:</p>
+          <label class="gender">Gender: {{gender}}</label>
+          <label class="city-state">Hometown:{{homeTown}}</label>
+          <label class="birthday">Birthday: {{birthday}}</label>
         </div>
   </div>
 
     <div class="left-column card">
-        <h3 class="bio">Bio:</h3>
-            <p class="insert-bio">...</p>
+        <h3 class="bio">Bio:{{bio}}</h3>
     </div>
 
 <div class="profile card">
@@ -33,9 +32,9 @@
         <div class="left-side">
             <p class="phone">
                 <i class="fa fa-phone">
-                </i>phone number</p>
+                </i>phone number: {{phone}}</p>
                 <p class="email"><i class="fa fa-envelope">
-                </i>email address</p>
+                </i>email address: {{email}}</p>
         </div>
     </div>
 </div>
@@ -44,4 +43,6 @@
     <button type="submit" class="btn btn-primary">Post</button>
   </div>
 </div>
+
+<script src="./js/profile.js"></script>
 
