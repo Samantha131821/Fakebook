@@ -1,18 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const newPostHandler = async (event) => {
     event.preventDefault();
       
@@ -58,4 +43,3 @@ const newPostHandler = async (event) => {
       document
         .querySelector('.project-list')
         .addEventListener('click', delButtonHandler);
-    
