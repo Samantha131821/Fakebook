@@ -10,14 +10,26 @@ class User extends Model {
 
 User.init(
   {
-    id: {
+    user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
+    user_name: {
       type: DataTypes.STRING,
+      allowNull: false,
+    },
+    profile_picture: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    hometown: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    birthday: {
+      type: DataTypes.DATE,
       allowNull: false,
     },
     email: {

@@ -1,14 +1,18 @@
-{
-  "posts":
   [
     {
-      "post_content": "Test 1 Post"
+      "post_content": "Post test 1, user 1",
+      "user_id": 1
     },
     {
-      "post_content": "Test 2 Post"
+      "post_content": "Post test 2, user 1",
+      "user_id": 1
     },
     {
-      "post_content": "Test 3 Post"
+      "post_content": "Post test 3, user 2",
+      "user_id": 2
+    },
+    {
+      "post_content": "Post test 4, user 3",
+      "user_id": 3
     }
   ]
-}

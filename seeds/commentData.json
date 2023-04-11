@@ -1,0 +1,32 @@
+[
+    {
+        "comment_content": "Comment test 1, posts id 1, user 1",
+        "post_id": 1,
+        "user_id": 1
+    },
+    {
+        "comment_content": "Comment test 2, posts id 1, user 2",
+        "post_id": 1,
+        "user_id": 2
+    },
+    {
+        "comment_content": "Comment test 3, posts id 1, user 3",
+        "post_id": 1,
+        "user_id": 3
+    },
+    {
+        "comment_content": "Comment test 4, posts id 2, user 2",
+        "post_id": 2,
+        "user_id": 2
+    },
+    {
+        "comment_content": "Comment test 5, posts id 2, user 1",
+        "post_id": 2,
+        "user_id": 1
+    },
+    {
+        "comment_content": "Comment test 3, posts id 2, user 4",
+        "post_id": 2,
+        "user_id": 4
+    }
+]
