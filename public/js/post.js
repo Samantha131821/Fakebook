@@ -24,22 +24,23 @@ const newPostHandler = async (event) => {
         if (event.target.hasAttribute('data-id')) {
           const id = event.target.getAttribute('data-id');
       
-          const response = await fetch(`/api/projects/${id}`, {
+          const response = await fetch(`/api/post${id}`, {
             method: 'DELETE',
           });
       
           if (response.ok) {
-            document.location.replace('/profile');
+            document.location.replace('/post');
           } else {
-            alert('Failed to delete project');
+            alert('Failed to delete post');
           }
         }
       };
       
       document
-        .querySelector('.new-project-form')
-        .addEventListener('submit', newFormHandler);
+        .querySelector('.post-form')
+        .addEventListener('submit', newPostHandler);
       
       document
-        .querySelector('.project-list')
+        .querySelector('.post-list')
         .addEventListener('click', delButtonHandler);
+    
