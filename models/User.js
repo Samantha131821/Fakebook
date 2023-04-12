@@ -22,15 +22,15 @@ User.init(
     },
     profile_picture: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     hometown: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     birthday: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
     },
     email: {
       type: DataTypes.STRING,
