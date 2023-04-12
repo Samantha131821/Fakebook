@@ -2,30 +2,112 @@ const router = require('express').Router();
 const { Post, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', async (req, res) => {
-  try {
-    // Get all posts and JOIN with user data
-    const postData = await Post.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
-        },
+
+
+
+
+
+
+
+router.get('/', (req, res) => {
+  console.log('======================');
+  Post.findAll({
+      attributes: [
+          'date_created',
+          'post_content'
       ],
+    order: [['date_created', 'DESC']],
+    where: { user_id: 1 },
+    include: [
+      // Comment model here -- attached username to comment
+      {
+        model: Comment,
+        attributes: ['comment_content', 'date_created'],
+        include: { 
+          model: User, 
+          attributes: ['user_name'],
+          
+        }
+      },
+      {
+        model: User,
+        attributes: ['user_name', 'hometown', 'email', 'birthday']
+
+      },
+
+    ]
+  })
+    .then(dbPostData => {
+        const posts = dbPostData.map(post => post.get({ plain: true }));
+       // res.json(dbPostData)
+
+        
+        res.render('profile', {
+            posts,
+        
+        
+        
+            // loggedIn: req.session.loggedIn
+          });
+//console.log(posts)
+      })
+      
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
     });
 
-    // Serialize data so the template can read it
-    const posts = postData.map((project) => post.get({ plain: true }));
+  });
 
-    // Pass serialized data and session flag into template
-    res.render('homepage', { 
-      posts, 
-      logged_in: req.session.logged_in 
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+
+
+
+
+
+
+
+
+
+// router.get('/', async (req, res) => {
+//   try {
+//     const postData = await Post.findAll();
+//     const posts = postData.map((post) => post.get({ plain: true }));
+
+//     res.render('profile', {posts});
+//       console.log('||||- ! -||||', posts);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
+
+
+
+
+// router.get('/', async (req, res) => {
+//   try {
+//     // Get all posts and JOIN with user data
+//     const postData = await Post.findAll({
+//       include: [
+//         {
+//           model: User,
+//           attributes: ['name'],
+//         },
+//       ],
+//     });
+
+//     // Serialize data so the template can read it
+//     const posts = postData.map((project) => post.get({ plain: true }));
+
+//     // Pass serialized data and session flag into template
+//     res.render('homepage', { 
+//       posts, 
+//       logged_in: req.session.logged_in 
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 router.get('/post/:id', async (req, res) => {
   try {

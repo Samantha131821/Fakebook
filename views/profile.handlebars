@@ -1,13 +1,13 @@
 <div class="container">
     <div class="profile-header">
       <div class="profile-img">
-        <img src="" width="200" alt="">
+        <img src="https://avatars.githubusercontent.com/u/108702715?v=4" width="200" alt="">
       </div>
       </div>
 
   <h1 class="title">Fakebook</h1>
   <div class="profile-nav card">
-    <h2 class="user-name"> Welcome, {{name}}!</h2>
+    <h2 class="user-name"> Welcome, {{user.user_name}}!</h2>
         <div class="info">
         <h3 class="header1">Account Info</h3>
           <label class="names">Name: {{name}}</label>
@@ -65,10 +65,10 @@
     {{#each posts as |post|}}
     <div class="row mb-2">
       <div class="col-md-8">
-        <h4>{{post.post_content}}</h4>
+        <h4><a href="/post/{{post.post_id}}">{{post.post_content}}</a></h4>
       </div>
       <div class="col-md-4">
-        <button class="delete-post btn btn-sm btn-danger" data-id="{{post.post_id}}">DELETE</button>
+        <button class="btn btn-sm btn-danger" data-id="{{post.post_id}}">DELETE</button>
       </div>
     </div>
     {{/each}}

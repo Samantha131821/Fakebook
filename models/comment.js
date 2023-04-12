@@ -22,6 +22,10 @@ Comment.init(
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      references: {
+        model: 'user',
+        key: 'user_id',
+      },
     },
     date_created: {
       type: DataTypes.DATE,
