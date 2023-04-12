@@ -3,17 +3,86 @@ const { Post, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 
-router.get('/', async (req, res) => {
-  try {
-    const postData = await Post.findAll();
-    const posts = postData.map((post) => post.get({ plain: true }));
 
-    res.render('profile', {posts});
-      console.log('||||- ! -||||', posts);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+
+
+
+
+
+router.get('/', (req, res) => {
+  console.log('======================');
+  Post.findAll({
+      attributes: [
+          'date_created',
+          'post_content'
+      ],
+    order: [['date_created', 'DESC']],
+    where: { user_id: 1 },
+    include: [
+      // Comment model here -- attached username to comment
+      {
+        model: Comment,
+        attributes: ['comment_content', 'date_created'],
+        include: { 
+          model: User, 
+          attributes: ['user_name'],
+          
+        }
+      },
+      {
+        model: User,
+        attributes: ['user_name', 'hometown', 'email', 'birthday']
+
+      },
+
+    ]
+  })
+    .then(dbPostData => {
+        const posts = dbPostData.map(post => post.get({ plain: true }));
+       // res.json(dbPostData)
+
+        
+        res.render('profile', {
+            posts,
+        
+        
+        
+            // loggedIn: req.session.loggedIn
+          });
+//console.log(posts)
+      })
+      
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+
+  });
+
+
+
+
+
+
+
+
+
+
+// router.get('/', async (req, res) => {
+//   try {
+//     const postData = await Post.findAll();
+//     const posts = postData.map((post) => post.get({ plain: true }));
+
+//     res.render('profile', {posts});
+//       console.log('||||- ! -||||', posts);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
+
+
+
 
 // router.get('/', async (req, res) => {
 //   try {
