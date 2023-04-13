@@ -24,19 +24,23 @@ const newPostHandler = async (event) => {
 
 
 
+  
 
 const newCommentHandler = async (event) => {
-  event.preventDefault();
 
-  const commentCreate = document.querySelector('#comment-desc').value.trim();
-  const postID = this.post_id;
-  console.log(postID);
+  console.log("here");
+  
+  const commentCreate = document.querySelector(`#comment-desc${event}`).value.trim();
+  
   console.log(commentCreate);
-  if (commentCreate) {
-    console.log(commentCreate);
-    const response = await fetch(`/api/posts/comment`, {
+  
+  
+  
+  if (event) {
+    console.log(event);
+    const response = await fetch(`/api/comments/comments2`, {
       method: 'POST',
-      body: JSON.stringify({ post_content: commentCreate, comment_likes: 0, post_id: postID }),
+      body: JSON.stringify({ comment_content: commentCreate, comment_likes: 0, post_id: event }),
       headers: {
         'Content-Type': 'application/json',
       },
@@ -49,6 +53,8 @@ const newCommentHandler = async (event) => {
     }
   }
 };
+
+
 
 
 
@@ -73,6 +79,8 @@ const delPostButtonHandler = async (event) => {
 };
 
 
+
+
 const delCommentButtonHandler = async (event) => {
   console.log(event);
   if (event) {
@@ -94,11 +102,10 @@ const delCommentButtonHandler = async (event) => {
 
 
 
-// document.querySelector('.new-comment-form').addEventListener('submit', newCommentHandler);
-
 document.querySelector('.new-post-form').addEventListener('submit', newPostHandler);
 
-// const deleteBtn = document.querySelector('.new-comment-form');
-// if(deleteBtn){
-// deleteBtn.addEventListener('click', delButtonHandler);
-// };
+
+function newFunk(){
+  preventDefault();
+  console.log('suck my balls')
+};
