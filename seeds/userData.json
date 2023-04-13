@@ -5,7 +5,8 @@
     "hometown": "Somewhere, NJ",
     "birthday": "4/11/2023",
     "email": "samantha@hotmail.com",
-    "password": "password12345"
+    "password": "password12345",
+    "bio": "I like getting my nails done"
   },
   {
     "user_name": "Jordan",
@@ -13,7 +14,8 @@
     "hometown": "Somewhere, NJ",
     "birthday": "4/11/2023",
     "email": "jordan@hotmail.com",
-    "password": "password12345"
+    "password": "password12345",
+    "bio": "I'm perfect all arround"
   },
   {
     "user_name": "0rest",
@@ -21,7 +23,8 @@
     "hometown": "Somewhere, NJ",
     "birthday": "4/11/2023",
     "email": "0rest@hotmail.com",
-    "password": "password12345"
+    "password": "password12345",
+    "bio": "I'm always tired :/"
   },
   {
     "user_name": "Steeven",
@@ -29,7 +32,8 @@
     "hometown": "Somewhere, NJ",
     "birthday": "4/11/2023",
     "email": "steeven@hotmail.com",
-    "password": "password12345"
+    "password": "password12345",
+    "bio": "I take good profile pictures"
   },
   {
     "user_name": "Josue",
@@ -37,7 +41,8 @@
     "hometown": "Somewhere, NJ",
     "birthday": "4/11/2023",
     "email": "josue@hotmail.com",
-    "password": "password12345"
+    "password": "password12345",
+    "bio": "I love to party ;)"
   }
 ]
 

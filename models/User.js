@@ -32,6 +32,10 @@ User.init(
       type: DataTypes.DATE,
       allowNull: true,
     },
+    bio: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -46,6 +50,11 @@ User.init(
       validate: {
         len: [8],
       },
+    },
+    member_created: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
     },
   },
   {
