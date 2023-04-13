@@ -35,17 +35,9 @@ router.get('/', withAuth, (req, res) => {
   })
     .then(dbPostData => {
         const posts = dbPostData.map(post => post.get({ plain: true }));
-       // res.json(dbPostData)
+        
+        res.render('profile', {...posts, logged_in: req.session.logged_in });
 
-        
-        res.render('profile', {
-            posts,
-        
-        
-        
-            // loggedIn: req.session.loggedIn
-          });
-//console.log(posts)
       })
       
     .catch(err => {
