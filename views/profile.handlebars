@@ -27,20 +27,26 @@
 <br>
 <br>
 <br>
+
+          {{!-- New post form --}}
           <h3>Create a New Post:</h3>
 
           <form class="form new-post-form">
             <div class="form-group">
               <label for="project-desc">What's on your mind...:</label>
-              <textarea class="form-input" id="post-desc" name="post-desc"></textarea>
+              <textarea class="form-input" id="post-desc" name="name"></textarea>
             </div>
+
+            {{!-- New post button --}}
             <div class="form-group">
               <button type="submit" class="btn btn-primary">Post</button>
             </div>
+          
           </form>
           
         </div>
         
+{{!-- Shows Posts if they exist--}}
   </div>
     
 
@@ -60,10 +66,10 @@
         </div>
         <form class="form new-comment-form">
           <div class="form-group">
-            <textarea class="form-input" id="comment-desc" name="comment-desc"></textarea>
+            <textarea class="form-input" id="comment-desc{{post.post_id}}" name="comment-desc"></textarea>
           </div>
           <div class="form-group">
-            <button type="submit" class="btn btn-primary">Comment</button>
+            <button type="submit" class="btn btn-primary" onclick="newCommentHandler({{post.post_id}})" >Comment</button>
           </div>
         </form>
         {{#if comments.length}}
@@ -75,9 +81,12 @@
                 <div class="post-style">
                   <h6>{{comment_content}}</h6>
                 </div>
+
+                {{!-- Comment delete button --}}
                 <div class="post-style">
                   <button class="btn btn-sm btn-danger delete-button" onclick="delCommentButtonHandler({{comment.comment_id}})"  data-id="{{comment.comment_id}}">Delete C</button>
                 </div>
+             
               </div>
               {{/each}}
 
