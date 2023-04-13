@@ -3,55 +3,23 @@
     <div class="profile-img">
       <img src="{{profile_picture}}" width="200" alt="">
     </div>
+    
   </div>
 
-  <div class="profile-nav card">
+  <div class="center profile-nav card">
     <h2 class="user-name"> Welcome, {{user_name}}!</h2>
     <div class="info">
       {{!-- <label class="member">Member Since: {{memberSince}}</label> --}}
       <h3 class="basic-info">About Me:</h3>
-      <label class="gender">Gender: {{gender}}</label>
+      {{!-- <label class="gender">Gender: {{gender}}</label> --}}
       <label class="city-state">Hometown:{{hometown}}</label>
-      <label class="birthday">Birthday: {{birthday}}</label>
-      <label class="bio">About : {{birthday}}</label>
-    </div>
-  </div>
-
-
-
-  <div class="profile card">
-    <div class="notification">
-      <i class="fa fa-bell"></i>
-      <span class="alert-message"></span>
-    </div>
-    <div class="main">
+      {{!-- <label class="birthday">Birthday: {{birthday}}</label> --}}
+      {{!-- <label class="bio">About : {{birthday}}</label> --}}
       <div class="left-side">
         <p class="email"><i class="fa fa-envelope">
           </i>email: {{email}}</p>
       </div>
     </div>
-  </div>
-      
-
-
-       <div class="friends">
-
-        {{#if followings.length}}
-            <div class="col-md-8 post-list">
-              <h4>Your fake friends:</h4>
-              {{#each followings as |following|}}
-            
-            
-                <div class="row mb-3">
-                  <div class="col-md-8">
-                    <h6><a href="/users/{{followee_id}}">Friend #{{followee_id}}</a></h6>
-                  </div>
-                </div>
-
-              {{/each}}
-            </div>
-        {{/if}}
-
         <div class="form-group">
           <button type="submit" class="btn btn-primary" id="all-users">All users</button>
         </div>
@@ -70,8 +38,16 @@
               <button type="submit" class="btn btn-primary">Post</button>
             </div>
           </form>
+          
         </div>
+        
+  </div>
+    
+<div>
 
+
+  
+</div>
 {{#if posts.length}}
 <div class="col-md-8 post-list">
   <h3>Recent Posts:</h3>
@@ -94,9 +70,6 @@
             <button type="submit" class="btn btn-primary">Comment</button>
           </div>
         </form>
-    </div>
-
-
         {{#if comments.length}}
             <div class="col-md-8 post-list">
               {{#each comments as |comment|}}
@@ -123,5 +96,26 @@
 {{/if}}
 </div>
 </div>
+    </div>
+
+<div class="friends">
+
+        {{#if followings.length}}
+            <div class="col-md-8 post-list">
+              <h4>Your fake friends:</h4>
+              {{#each followings as |following|}}
+            
+            
+                <div class="row mb-3">
+                  <div class="col-md-8">
+                    <h6><a href="/users/{{followee_id}}">Friend #{{followee_id}}</a></h6>
+                  </div>
+                </div>
+
+              {{/each}}
+            </div>
+        {{/if}}
+
+
 <script src="../js/friends.js"></script>
 <script src="../js/post.js"></script>
