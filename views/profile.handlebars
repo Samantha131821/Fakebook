@@ -1,79 +1,127 @@
 <div class="container">
-    <div class="profile-header">
-      <div class="profile-img">
-        <img src="https://avatars.githubusercontent.com/u/108702715?v=4" width="200" alt="">
-      </div>
-      </div>
+  <div class="profile-header">
+    <div class="profile-img">
+      <img src="{{profile_picture}}" width="200" alt="">
+    </div>
+  </div>
 
   <div class="profile-nav card">
-    <h2 class="user-name"> Welcome, {{user.user_name}}!</h2>
-        <div class="info">
-        <h3 class="header1">Account Info</h3>
-          <label class="names">Name: {{name}}</label>
-          {{!-- <label class="member">Member Since: {{memberSince}}</label> --}}
-        <h3 class="basic-info">About Me:</h3>
-          <label class="gender">Gender: {{gender}}</label>
-          <label class="city-state">Hometown:{{homeTown}}</label>
-          <label class="birthday">Birthday: {{birthday}}</label>
-        </div>
+    <h2 class="user-name"> Welcome, {{user_name}}!</h2>
+    <div class="info">
+      {{!-- <label class="member">Member Since: {{memberSince}}</label> --}}
+      <h3 class="basic-info">About Me:</h3>
+      <label class="gender">Gender: {{gender}}</label>
+      <label class="city-state">Hometown:{{hometown}}</label>
+      <label class="birthday">Birthday: {{birthday}}</label>
+      <label class="bio">About : {{birthday}}</label>
+    </div>
   </div>
 
-    <div class="left-column card">
-        <h3 class="bio">Bio:{{bio}}</h3>
-    </div>
 
-<div class="profile card">
+
+  <div class="profile card">
     <div class="notification">
       <i class="fa fa-bell"></i>
-      <span class="alert-message">5</span>
+      <span class="alert-message"></span>
     </div>
     <div class="main">
-        <div class="left-side">
-            <p class="phone">
-                <i class="fa fa-phone">
-                </i>phone number: {{phone}}</p>
-                <p class="email"><i class="fa fa-envelope">
-                </i>email address: {{email}}</p>
+      <div class="left-side">
+        <p class="email"><i class="fa fa-envelope">
+          </i>email: {{email}}</p>
+      </div>
+    </div>
+  </div>
+      
+
+
+       <div class="friends">
+
+        {{#if followings.length}}
+            <div class="col-md-8 post-list">
+              <h4>Your fake friends:</h4>
+              {{#each followings as |following|}}
+            
+            
+                <div class="row mb-3">
+                  <div class="col-md-8">
+                    <h6><a href="/users/{{followee_id}}">Friend #{{followee_id}}</a></h6>
+                  </div>
+                </div>
+
+              {{/each}}
+            </div>
+        {{/if}}
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary" id="all-users">All users</button>
         </div>
-    </div>
-</div>
-<div class="friends">
-  <ul>
-    <li>friend 1</li>
-    <li>friend 2</li>
-    <li>friend 3</li>
-  </ul>
-</div>
-    <h3>Create a New Post:</h3>
-
-    <form class="form new-post-form">
-      <div class="form-group">
-        <label for="project-desc">What's on your mind...:</label>
-        <textarea class="form-input" id="post-desc" name="post-desc"></textarea>
       </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Post</button>
-      </div>
-    </form>
-  </div>
+<br>
+<br>
+<br>
+          <h3>Create a New Post:</h3>
 
-  {{#if posts.length}}
-  <div class="col-md-6 post-list">
-    <h3>Recent Posts:</h3>
+          <form class="form new-post-form">
+            <div class="form-group">
+              <label for="project-desc">What's on your mind...:</label>
+              <textarea class="form-input" id="post-desc" name="post-desc"></textarea>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">Post</button>
+            </div>
+          </form>
+        </div>
 
-    {{#each posts as |post|}}
+{{#if posts.length}}
+<div class="col-md-8 post-list">
+  <h3>Recent Posts:</h3>
+  {{#each posts as |post|}}
+  <p>------------------------------------------------------------------------------------------------------</p>
     <div class="row mb-2">
-      <div class="col-md-8">
-        <h4><a href="/post/{{post.post_id}}">{{post.post_content}}</a></h4>
-      </div>
-      <div class="col-md-4">
-        <button class="btn btn-sm btn-danger delete-button" data-id="{{post.post_id}}">DELETE</button>
-      </div>
+        <div class="col-md-12">
+          <h4>{{post.post_content}}</h4>
+
+          <div class="col-md-4">
+            <button class="btn btn-sm btn-danger delete-button" onclick="delPostButtonHandler({{post.post_id}})" data-id="{{post.post_id}}">DELETE P</button>
+          </div>
+
+        </div>
+        <form class="form new-comment-form">
+          <div class="form-group">
+            <textarea class="form-input" id="comment-desc" name="comment-desc"></textarea>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Comment</button>
+          </div>
+        </form>
     </div>
-    {{/each}}
-  </div>
-  {{/if}}
-</div>
+
+
+        {{#if comments.length}}
+            <div class="col-md-8 post-list">
+              {{#each comments as |comment|}}
+            
+            
+              <div class="row mb-3">
+                <div class="col-md-8">
+                  <h6>{{comment_content}}</h6>
+                </div>
+                <div class="col-md-2">
+                  <button class="btn btn-sm btn-danger delete-button" onclick="delCommentButtonHandler({{comment.comment_id}})"  data-id="{{comment.comment_id}}">Delete C</button>
+                </div>
+              </div>
+              {{/each}}
+
+            </div>
+        {{/if}}
+
 </div>
 
+</div>
+{{/each}}
+</div>
+{{/if}}
+</div>
+</div>
+<script src="../js/friends.js"></script>
 <script src="../js/post.js"></script>
