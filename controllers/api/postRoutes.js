@@ -17,7 +17,7 @@ router.post('/', withAuth, async (req, res) => {
 
  
 
-
+//Post gets deleted
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const postData = await Post.destroy({

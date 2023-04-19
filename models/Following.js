@@ -13,22 +13,29 @@ Following.init(
         },
         follower_id: {
             type: DataTypes.INTEGER,
-            references: {
-                model: 'user',
-                key: 'user_id',
-            },
+            // references: {
+            //     model: 'user',
+            //     key: 'user_id',
+            // },
         },
         followee_id: {
             type: DataTypes.INTEGER,
-            references: {
-                model: 'user',
-                key: 'user_id',
-            },
+            // references: {
+            //     model: 'user',
+            //     key: 'user_id',
+            // },
+        },
+        followee_name: {  //This is what i need to come from User model!!!
+            type: DataTypes.STRING,
         },
         date_followed: {
             type: DataTypes.DATE,
             allowNull: false,
             defaultValue: DataTypes.NOW,
+        },
+        profile_picture: {
+            type: DataTypes.TEXT,
+            allowNull: true,
         },
     },
     {

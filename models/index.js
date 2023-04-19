@@ -3,6 +3,7 @@ const Post = require('./Post');
 const Comment = require('./Comment');
 const Following = require('./Following');
 
+//User owns Posts
 User.hasMany(Post, {
   foreignKey: 'user_id',
   onDelete: 'CASCADE'
@@ -11,7 +12,9 @@ User.hasMany(Post, {
 Post.belongsTo(User, {
   foreignKey: 'user_id'
 });
+//----------------------
 
+//Posts own comments
 Post.hasMany(Comment, {
   foreignKey: 'post_id',
   onDelete: 'CASCADE'
@@ -20,7 +23,9 @@ Post.hasMany(Comment, {
 Comment.belongsTo(Post, {
   foreignKey: 'post_id'
 });
+//----------------------
 
+//User also owns comments
 User.hasMany(Comment, {
   foreignKey: 'user_id',
   onDelete: 'CASCADE'
@@ -29,25 +34,35 @@ User.hasMany(Comment, {
 Comment.belongsTo(User, {
   foreignKey: 'user_id'
 });
+//----------------------
 
+//User owns Following and only wishes for this to go both ways...
 User.hasMany(Following, {
   foreignKey: 'follower_id',
   onDelete: 'CASCADE'
 });
 
-Following.belongsTo(User, {
+Following.belongsTo( User, {
   foreignKey: 'follower_id'
 });
 
-Following.hasMany(User, {
-  foreignKey: 'user_id',
-  onDelete: 'CASCADE'
-});
 
-User.belongsTo(Following, {
-  foreignKey: 'user_id'
-});
 
+
+
+// User.belongsToMany(User, { through: Following, as: 'follower_id'} );
+
+// User.belongsToMany(User, { through: Following, as: 'followee_id'} );
+
+
+
+
+
+// Following.hasOne(User, {
+//   foreignKey: 'user_id'
+// });
+
+// User.belongsToMany(Following, {through: Following, as: 'new_followee_id'});
 
 
 
