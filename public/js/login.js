@@ -1,26 +1,54 @@
 const loginFormHandler = async (event) => {
     event.preventDefault();
-  
-
     const email = document.querySelector('#email-login').value.trim();
     const password = document.querySelector('#password-login').value.trim();
   
     if (email && password) {
-      // Sending a POST request to the API endpoint
+      // Sending a POST request to the login API for verification and session
       const response = await fetch('/api/users/login', {
         method: 'POST',
         body: JSON.stringify({ email, password }),
         headers: { 'Content-Type': 'application/json' },
-      });
+      })    
   
       if (response.ok) {
-        document.location.replace('/');
+        const data = await response.json();
+         console.log(data.userData.user_id);
+        document.location.replace(`/profile/${data.userData.user_id}`);
       } else {
         alert(response.statusText);
       }
     }
   };
   
+
+  const randomName = async () => { const response = await fetch('/api/users/generate-name', { method: 'GET' });
+      
+  if (response.ok) {
+        const data = await response.json();
+         console.log(data);
+         document.getElementById('name-signup').setAttribute('value', data);
+      } else {
+        alert(response.statusText);
+      }
+  };
+
+
+
+const numItemsToGenerate = 1; 
+
+function randomPic(){
+
+  fetch(`https://source.unsplash.com/600x400/?headshot`)
+  .then((response)=> {   
+    console.log(response.url)
+    document.getElementById('profile-picture-signup').setAttribute('value', response.url);
+    document.getElementById('profile-picture-preview').setAttribute('src', response.url);
+  })
+ 
+};
+
+
   const signupFormHandler = async (event) => {
     event.preventDefault();
   
@@ -40,12 +68,13 @@ const loginFormHandler = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/');
+        document.location.replace(`/`);
       } else {
         alert(response.statusText);
       }
     }
   };
+  
   
   document
     .querySelector('.login-form')

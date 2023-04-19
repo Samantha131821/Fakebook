@@ -24,22 +24,17 @@
       <div class="form-group">
         <label for="name-signup">Username:</label>
         <input class="form-input" type="text" id="name-signup" />
-        <button class="btn btn-primary" type="generate" id="myButton">Auto Generate Username</button>
-      </div>
-      
-      <div class="form-group">
-        <label for="email-signup">Email:</label>
-        <input class="form-input" type="text" placeholder="Enter Email" id="email-signup" />
-      </div>
-      
-      <div class="form-group">
-        <label for="password-signup">Password:</label>
-        <input class="form-input" type="password" placeholder="Enter Password" id="password-signup" />
+        <button class="btn btn-primary" onclick="randomName()" id="generate-button">Generate Username</button>
       </div>
       
       <div class="form-group">
         <label for="profile-picture-signup">Profile picture link:</label>
         <input class="form-input" type="text" placeholder="https://..." id="profile-picture-signup" />
+        <button class="btn btn-primary" onclick="randomPic()" id="profile-pic-button">Generate Profile Pic</button>
+      </div>
+
+      <div>
+        <img id="profile-picture-preview"  width="200">   
       </div>
      
       <div class="form-group">
@@ -56,7 +51,19 @@
         <label for="bio-signup">Bio:</label>
         <input class="form-input" type="text" placeholder="Tell us a little about yourself..." id="bio-signup" />
       </div>
+
       
+      <div class="form-group">
+        <label for="email-signup">Email:</label>
+        <input class="form-input" type="text" placeholder="Enter Email" id="email-signup" />
+      </div>
+      
+      <div class="form-group">
+        <label for="password-signup">Password:</label>
+        <input class="form-input" type="password" placeholder="Enter Password" id="password-signup" />
+      </div>
+
+
       <div class="form-group">
         <button class="btn btn-primary" type="submit">Signup</button>
       </div>

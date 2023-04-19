@@ -1,7 +1,17 @@
 const router = require('express').Router();
 const { User } = require('../../models');
+const withAuth = require('../../utils/auth');
+const { uniqueNamesGenerator, adjectives, colors, animals, names } = require('unique-names-generator');
 
-//creating a new user
+
+// GET eandom username
+router.get('/generate-name', (req, res) =>{ 
+  const randomName = uniqueNamesGenerator({ dictionaries: [adjectives,  names], style: 'capital', separator: ''});
+  res.json(randomName);
+ });
+
+
+//Creating a new user
 router.post('/', async (req, res) => {
   try {console.log(req.body);
     const userData = await User.create(req.body);
@@ -17,15 +27,16 @@ router.post('/', async (req, res) => {
   }
 });
 
+
 //logging in
 router.post('/login', async (req, res) => {
   try {
     console.log('user login post route', req.body);
     const userData = await User.findOne({ where: { email: req.body.email } });
-    console.log('userData: ', userData);
+    console.log('Logging in userData: ', userData);
+    
     if (!userData) {
-      res
-        .status(400).json({ message: 'Incorrect email or password, please try again' });
+      res.status(400).json({ message: 'Incorrect email or password, please try again' });
       return;
     }
 
@@ -33,22 +44,21 @@ router.post('/login', async (req, res) => {
 
     if (!validPassword) {
       res
-        .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
+        .status(400).json({ message: 'Incorrect email or password, please try again' });
       return;
     }
 
     req.session.save(() => {
       req.session.user_id = userData.user_id; //fixed session.user_id issue
       req.session.logged_in = true;
-      
-      res.json({ user: userData, message: 'You are now logged in!' });
+      res.json({ userData, message: 'You are now logged in!' });
     });
 
   } catch (err) {
     res.status(400).json(err);
   }
 });
+
 
 //loging out
 router.post('/logout', (req, res) => {
@@ -61,10 +71,10 @@ router.post('/logout', (req, res) => {
   }
 });
 
+
 // GET Route for all users list
-router.get('/all', (req, res) =>{
- 
-  User.findAll()
+router.get('/all', withAuth, (req, res) =>{
+   User.findAll()
   .then((data) => {
     const users = data.map(post => post.get({ plain: true }));
     console.log('User data: ', users);

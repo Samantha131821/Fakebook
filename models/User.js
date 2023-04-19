@@ -15,13 +15,17 @@ User.init(
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
+    //   references: {
+    //     model: 'following',
+    //     key: 'follower_id',
+    // },
     },
     user_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     profile_picture: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     hometown: {
@@ -55,6 +59,11 @@ User.init(
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: DataTypes.NOW,
+    },
+    theme: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      defaultValue: 'card'
     },
   },
   {

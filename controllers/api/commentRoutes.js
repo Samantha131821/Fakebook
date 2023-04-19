@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-//Gets comments for each post (WORKS)
+//Gets comments for each post (WORKING)
 router.get('/', (req, res) => {
   Comment.findAll({})
     .then(dbCommentData => res.json(dbCommentData))
@@ -13,16 +13,8 @@ router.get('/', (req, res) => {
 });
 
 
-
-
-
-
-
-
 // New comment (WORKING)
 router.post('/comments2', withAuth, async (req, res) => {
-  // console.log('req.body',req.body);
-  // console.log('req.session',req.session);
   const targetObj = {...req.body, user_id: req.session.user_id };
   console.log("WE ARE HERE!!!")
   console.log(targetObj)
@@ -36,12 +28,7 @@ router.post('/comments2', withAuth, async (req, res) => {
 });
 
 
-
-
-
-
-
-// Deletes Post comment (DO NOT CHANGE!)
+// Deletes Post comment (WORKING)
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const postData = await Comment.destroy({
